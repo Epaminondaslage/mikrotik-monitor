@@ -1,0 +1,28 @@
+# Dependências
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build
+frontend/dist/
+
+# Banco de dados
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# Ambiente
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore

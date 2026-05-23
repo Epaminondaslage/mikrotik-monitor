@@ -1,0 +1,63 @@
+/* =============================================================================
+   Mikrotik Monitor — frontend/src/index.css
+   Estilos globais + diretivas Tailwind
+   ============================================================================= */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scrollbar customizada — dark mode */
+@layer base {
+  :root {
+    --scrollbar-bg: #1f2937;
+    --scrollbar-thumb: #4f46e5;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply font-sans;
+  }
+}
+
+/* Utilitários de componentes recorrentes */
+@layer components {
+  .card {
+    @apply rounded-xl border bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 shadow-sm;
+  }
+
+  .badge-up {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium
+           bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400;
+  }
+
+  .badge-down {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium
+           bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400;
+  }
+
+  .badge-type {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium
+           bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300;
+  }
+}
