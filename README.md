@@ -68,50 +68,13 @@ mikrotik-monitor/
 
 ---
 
-## Deploy no servidor 10.0.0.5
-
-### 1. Clonar o repositório
-
-```bash
-ssh epaminondas@10.0.0.5
-sudo mkdir -p /opt/mikrotik-monitor
-sudo chown epaminondas:epaminondas /opt/mikrotik-monitor
-cd /opt/mikrotik-monitor
-git clone https://github.com/Epaminondaslage/mikrotik-monitor.git .
-```
-
-### 2. Criar diretório de dados
-
-```bash
-mkdir -p /opt/mikrotik-monitor/data
-```
-
-### 3. Tornar o script executável
-
-```bash
-chmod +x scripts/mikrotik-monitor.sh
-sudo ln -s /opt/mikrotik-monitor/scripts/mikrotik-monitor.sh /usr/local/bin/mikrotik-monitor
-```
-
-### 4. Iniciar
+## Iniciar
 
 ```bash
 mikrotik-monitor start
 ```
 
 Acesso: **http://10.0.0.5:3040**
-
----
-
-## Transferência via SCP
-
-```bash
-# Do Mac — enviar arquivo atualizado
-scp ~/Downloads/arquivo.jsx epaminondas@10.0.0.5:/opt/mikrotik-monitor/frontend/src/
-
-# Após enviar, rebuild:
-ssh epaminondas@10.0.0.5 "cd /opt/mikrotik-monitor && mikrotik-monitor restart"
-```
 
 ---
 
