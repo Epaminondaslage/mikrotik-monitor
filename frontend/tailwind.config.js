@@ -1,23 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  // Dark mode controlado por classe na tag <html>
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        // Paleta principal — tons de indigo (accent) + cinza neutro
         brand: {
-          50:  "#eef2ff",
-          100: "#e0e7ff",
-          200: "#c7d2fe",
-          300: "#a5b4fc",
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
-          800: "#3730a3",
-          900: "#312e81",
+          50:  "#e0f2f1",
+          100: "#b2dfdb",
+          200: "#80cbc4",
+          300: "#4db6ac",
+          400: "#26a69a",
+          500: "#009688",
+          600: "#00897b",
+          700: "#00796b",
+          800: "#00695c",
+          900: "#004d40",
         },
       },
       fontFamily: {
