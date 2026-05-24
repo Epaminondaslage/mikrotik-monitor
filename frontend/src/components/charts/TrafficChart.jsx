@@ -129,7 +129,7 @@ export default function TrafficChart({ ifaceIndex, ifaceName }) {
                   interval="preserveStartEnd"
                 />
                 <YAxis
-                  tickFormatter={(v) => `${v.toFixed(1)}`}
+                  tickFormatter={(v) => v < 1 ? `${(v * 1000).toFixed(0)}K` : `${v.toFixed(2)}`}
                   tick={{ fontSize: 10, fill: "#9ca3af" }}
                   tickLine={false}
                   axisLine={false}
