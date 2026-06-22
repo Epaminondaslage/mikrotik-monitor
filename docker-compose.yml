@@ -25,25 +25,17 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3001
-      # Mikrotik alvo
       MIKROTIK_HOST: "10.0.0.1"
       SNMP_COMMUNITY: "public"
       SNMP_VERSION: "2c"
-      # Coleta a cada 5 minutos (em ms)
       COLLECT_INTERVAL_MS: 300000
-      # SQLite — caminho dentro do container
       DB_PATH: "/app/data/mikrotik.db"
     volumes:
-      # Dados persistentes do SQLite
       - mikrotik_data:/app/data
     networks:
       - mikrotik_net
-    # O backend NÃO expõe porta para o host diretamente; o frontend (Nginx)
-    # faz proxy_pass para ele. Caso queira debug direto, descomente:
-    # ports:
-    #   - "3001:3001"
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3001/api/health"]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3001/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -56,7 +48,6 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        # URL da API vista pelo navegador (passa pelo Nginx interno)
         VITE_API_BASE_URL: "/api"
     container_name: mikrotik-monitor-frontend
     restart: unless-stopped
@@ -67,6 +58,11 @@ services:
         condition: service_healthy
     networks:
       - mikrotik_net
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 # =============================================================================
 # Volumes
